@@ -1,0 +1,67 @@
+ul {
+    height: 70px;
+    width: 110%;
+    list-style-type: none;
+    margin: 0;
+    margin-top: -11px;
+    margin-left: -11px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+
+  li {
+    list-style: none;
+    float: left;
+    color: white;
+    margin-right: 23vh;
+  }
+  
+  li a {
+    height: 70px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 32px;
+    padding-top: 22px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    color: #d33a3a;
+  }
+
+  #realcompany {
+    font-size: 30px;
+    padding-top: 16px;
+    margin-left: 10px;
+  }
+
+  #why {
+    margin-left: -130px;
+  }
+  #product {
+    margin-left: -130px;
+  }
+  #company {
+    margin-left: -130px;
+  }
+  #blog {
+    margin-left: -150px;
+  }
+  #profile {
+    background-image: url('media/profileIcon.ico');
+    border: none;
+    width: 51px;
+    height: 51px;
+    margin-top: 10px;
+    transform: scale(1.05);
+    border-color: #333;
+  }
+  #profile:hover {
+    border: 1px solid #d33a3a;
+  }
