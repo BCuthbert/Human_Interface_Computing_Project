@@ -1,0 +1,49 @@
+
+form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 70px;
+
+}
+
+#username, #password {
+    width: 200px;
+    height: 24px;
+    position: relative;
+    display: block;
+    margin-left: 623px;
+    font-size: 15px;
+}
+
+
+form #username {
+    margin-top: 150px;
+    letter-spacing: 0.5px;
+}
+
+form #password {
+    margin-top: 30px;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+form button {
+    background-color: white;
+    position: relative;
+    display: block;
+    margin-left: 681px;
+    margin-top: 25px;
+    width: 100px;
+    height: 25px;
+}
+
+form button:hover {
+    background-color: #eceaea;
+}
+
+#incorrectMessage {
+    width: 100%;
+}

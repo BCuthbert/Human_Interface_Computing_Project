@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 
 
-<head>
-    
-    <script type="module" src="index.js"></script>
-    <script type="module" src="navbar.js"></script>
-    <link rel="stylesheet" href="navbar.css"></link>
-    
+<script src="navbar.js"></script>
+<link rel="stylesheet" type="text/css" href="login.css"></link>
+<script src="login.js"></script>
 
+
+
+
+<html>
+<head>
     <ul id="insertNav">
         <li><a id="realcompany">RealCompany</a></li>
         <li><a id="why">Why</a></li>
@@ -19,3 +21,15 @@
     </ul>
 </head>
 
+<body>
+    <form id="loginform">
+        
+        <input id="username"></input>
+        <input type="password" id="password"></input>
+        <button type="button" onclick="checkLogin()" id="loginbtn">Login</button>
+        
+    </form>
+</body>
+
+
+</html>

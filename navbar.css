@@ -1,33 +1,42 @@
 ul {
-    height: 70px;
-    width: 110%;
-    list-style-type: none;
     margin: 0;
-    margin-top: -11px;
-    margin-left: -11px;
     padding: 0;
+    height: 70px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    list-style-type: none;
     overflow: hidden;
-    background-color: #333;
+    background-color: white;
   }
+
+
   
 
   li {
     list-style: none;
     float: left;
-    color: white;
+    color: black;
     margin-right: 23vh;
+  }
+
+  ul div {
+    float: left;
   }
   
   li a {
     height: 70px;
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 32px;
     padding-top: 22px;
     text-decoration: none;
     font-size: 20px;
+    
   }
+
   
   
   /* Change the link color to #111 (black) on hover */
@@ -53,15 +62,15 @@ ul {
   #blog {
     margin-left: -150px;
   }
-  #profile {
-    background-image: url('media/profileIcon.ico');
+  #profileIcon {
+    background-image: url('media/profileIcon2.ico');
     border: none;
-    width: 51px;
-    height: 51px;
+    width: 50px;
+    height: 50px;
     margin-top: 10px;
     transform: scale(1.05);
-    border-color: #333;
+    /* border-color: #333; */
   }
-  #profile:hover {
-    border: 1px solid #d33a3a;
+  #profileIcon:hover {
+    cursor: pointer;
   }
