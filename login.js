@@ -1,5 +1,14 @@
 
-
+const isLoggedIn = async() => {
+    const webaddress = "http://localhost:5000/isLoggedIn";
+    const response = await fetch(webaddress);
+    const json = await response.json();
+    if (json.username != null){
+      return json.username;
+    }else {
+      return null;
+    }
+  }
 
 const checkLogin = async() => {
     const username = document.getElementById("username").value;
@@ -9,10 +18,12 @@ const checkLogin = async() => {
     const json = await response.json();
 
     if (json.found) {
-        console.log("user found " + json.username)
+        const textField = document.getElementById("username_field");
+        textField.textContent = username;
     } else {
         console.log("user not found " + json.username);
     }
+    
 
 }
 
