@@ -1,0 +1,73 @@
+.page-header {
+    padding: 75px 2rem 2rem;
+    background-color: #A64D79;
+}
+
+.faq-section {
+    padding: 2rem;
+}
+
+.site-footer {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f1f1f1;
+    opacity: 0.8;
+}
+
+.benefit-box {
+	border: 1px solid #000;
+	height: 100px;
+    width: 100px;
+	display: inline-block;
+	line-height: 100px;
+	text-align: center;
+	margin: 0 0px; /* space between boxes */
+}
+.image-placeholder {
+	border: 2px dashed #000;
+	height: 200px; /* dimensions are placeholder */
+	width: 100%;
+	background: url('#') no-repeat center; /* add image */
+	background-size: cover; /* ensure the image covers the entire area */
+}
+.position-box {
+	border: 1px solid #000;
+	margin: 10px 0;
+	padding: 10px;
+}
+.apply-button {
+	text-decoration: none;
+	background-color: #f44336;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	display: inline-block;
+	margin: 10px 0;
+}
+
+/* accordion button related things */
+.accordion {
+	background-color: #eee;
+	color: #444;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+	transition: 0.4s;
+}
+
+.active, .accordion:hover {
+	background-color: #ccc;
+}
+
+/* accordion panel */
+.panel {
+	padding: 0 18px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
