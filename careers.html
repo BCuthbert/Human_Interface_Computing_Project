@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>RealCompany</title>
+<title>Careers</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,21 +19,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card w3-large">
-    <a class="w3-bar-item w3-left-align w3-button w3-padding-large w3-hover-red" style="font-size:23px;background-color:#A64D79;" onclick="window.location.reload();">RealCompany</a>
+    <a href="index.html" class="w3-bar-item w3-left-align w3-button w3-padding-large w3-hover-red" style="font-size:23px;background-color:#A64D79;">RealCompany</a>
     <a href="whyreal.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Why</a>
     <a href="product.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Product</a>
     <a href="about.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Company</a>
     <a href="blog.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Blog</a>
-    <a href="/login.html" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i></a>
+    <a onclick="checkLoggedIn();" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i><div id="display_username"></div></a>
   </div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
-  </div>
+  
 </div>
 
 <head>
@@ -49,8 +43,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- header -->
 <div class="page-header w3-container">
     <h2>RealCompany Careers</h2>
-    <p>We're looking for self-motivated problem-solvers with communication skills who share our passion for making an impact</p>
-    <a href="#" class="apply-button">Apply here</a>
+    <p>We're looking for self-motivated problem-solvers with communication skills who share our passion for making an impact.<br><br>Submit your resume to apply for a job!</p>
+    <input type="file">
 	<!-- add link to the apply page -->
 </div>
 
@@ -71,9 +65,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-container w3-border w3-padding" style="background-color: #d6d6d6;">
     <h3 class="w3-center">Employee benefits</h3>
     <div class="w3-row-padding w3-center">
-        <div class="benefit-box">Benefit 1</div>
-        <div class="benefit-box">Benefit 2</div>
-        <div class="benefit-box">Benefit 3</div>
+        <div class="benefit-box" style="width:400px;">Great 401k benefits</div>
+        <div class="benefit-box" style="width:400px;">100k starting salary</div>
+        <div class="benefit-box" style="width:400px;">Paid vacation days on signing</div>
     </div>
 </div>
 
@@ -81,12 +75,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-container w3-border w3-padding">
     <h3>Open Positions</h3>
     <div class="position-box">
-		<h4>Position 1</h4>
-		<p>Lorem ipsum dolor sit amet</p>
+		<h4>Product Development Specialist</h4>
+		<p>Help develop our fail-safe products, as well as improve speed and compatibility between users.</p>
 	</div>
     <div class="position-box">
-		<h4>Position 2</h4>
-		<p>Lorem ipsum dolor sit amet</p>
+		<h4>Web Developer</h4>
+		<p>As you can see, we have quite the web development team. As a growing company, we need motivated individuals to assist our ever-growing user base!</p>
 	</div>
 </div>
 </body>
@@ -117,4 +111,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <p>Don't see what you're looking for? <a href="#">Contact us</a></p> <!-- add link -->
     <p>Additional resources: see our <a href="#">blog</a></p> <!-- add link -->
 </footer>
+
+<script>
+    window.onload = async function() {
+      const webAddress = "http://localhost:5000/isLoggedIn";
+      const response = await fetch(webAddress);
+      const json = await response.json();
+      
+      if (json.username != null){
+        document.getElementById("display_username").textContent = json.username;
+      }
+    }
+  </script>
+
+<script src="login.js"></script>
+
 </html>

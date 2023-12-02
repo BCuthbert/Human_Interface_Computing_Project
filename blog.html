@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>RealCompany</title>
+<title>Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -24,16 +24,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <a href="product.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Product</a>
     <a href="about.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Company</a>
     <a href="blog.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Blog</a>
-    <a href="/login.html" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i></a>
+    <a onclick="checkLoggedIn();" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i><div id="display_username"></div></a>
   </div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
-  </div>
+  
 </div>
 
 <head>
@@ -77,7 +71,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
     <div class="w3-row">
         <div class="w3-container w3-border w3-padding">
-            <div class="w3-col m2 w3-left"><h4>...</h4></div>
+            <div class="w3-col m2 w3-left"><h4>Bug Fixes and new RC 5.3.23 Update!</h4></div>
+            <div class="w3-col m2 w3-right w3-right-align"><h6>12/02/2023 19:00</h6></div>
+            <div class="w3-col m4 w3-left w3-left-align"><h5>Christmas is coming soon, along with Christmas update!</h5></div>
         </div>
     </div>
 </div>
@@ -108,4 +104,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <p>Don't see what you're looking for? <a href="#">Contact us</a></p> <!-- add link -->
     <p>Additional resources: see our <a href="#">blog</a></p> <!-- add link -->
 </footer>
+
+
+<script>
+    window.onload = async function() {
+      const webAddress = "http://localhost:5000/isLoggedIn";
+      const response = await fetch(webAddress);
+      const json = await response.json();
+      
+      if (json.username != null){
+        document.getElementById("display_username").textContent = json.username;
+      }
+    }
+  </script>
+  <script src="login.js"></script>
+
 </html>

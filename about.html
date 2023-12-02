@@ -19,21 +19,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card w3-large">
-    <a class="w3-bar-item w3-left-align w3-button w3-padding-large w3-hover-red" style="font-size:23px;background-color:#A64D79;" onclick="window.location.reload();">RealCompany</a>
+    <a href="index.html" class="w3-bar-item w3-left-align w3-button w3-padding-large w3-hover-red" style="font-size:23px;background-color:#A64D79;">RealCompany</a>
     <a href="whyreal.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Why</a>
     <a href="product.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Product</a>
     <a href="about.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Company</a>
     <a href="blog.html" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Blog</a>
-    <a href="/login.html" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i></a>
+    <a onclick="checkLoggedIn();" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i><div id="display_username"></div></a>
   </div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
-  </div>
+  
 </div>
 
 <head>
@@ -48,8 +42,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <!-- header -->
 <div class="page-header w3-container">
-    <h2 style="color:white;">About RealCompany</h2>
-    <p style="color:white;">We're a small development team dedicated to shipping the product you need!</p>
+    <h2>About RealCompany</h2>
+    <p>We're a small development team dedicated to shipping the product you need!</p>
 </div>
 
 <!-- what we do -->
@@ -150,4 +144,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <p>Don't see what you're looking for? <a href="contact.html">Contact us</a></p>
     <p>Additional resources: see our <a href="blog.html">blog</a></p> 
 </footer>
+
+
+
+<script>
+    window.onload = async function() {
+      const webAddress = "http://localhost:5000/isLoggedIn";
+      const response = await fetch(webAddress);
+      const json = await response.json();
+      
+      if (json.username != null){
+        document.getElementById("display_username").textContent = json.username;
+      }
+    }
+  </script>
+  <script src="login.js"></script>
 </html>
