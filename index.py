@@ -10,7 +10,10 @@ import re
 app = Flask(__name__)
 CORS(app)
 
-
+user = {
+    "name": None,
+    "isLoggedIn": None,
+}
 
 
 def readCSV():
@@ -60,8 +63,11 @@ def authenticate():
     if not flag:
         print("USER NOT FOUND__________")
         loginMess = "Incorrect username or password."
+        user["isLoggedIn"] = False
         return jsonify({"found": False, "username": username, "loginmsg": loginMess})
     else:
+        user["name"] = username
+        user["isLoggedIn"] = True
         return jsonify({"found": True, "username": username, "loginmsg": loginMess})
 
 @app.route('/new')
@@ -79,8 +85,25 @@ def newAcc():
             return jsonify({"success": False})
     data.append([username,encrypt(password)])
     writeCSV(data)
+    user["name"] = username
+    user["isLoggedIn"] = True
     return jsonify({"success": True, "special": True})
 
+@app.route('/isLoggedIn')
+def checkLoggedIn():
+    if user["isLoggedIn"]:
+        return jsonify({"username": user["name"]});
+    return jsonify({"username": None})
+
+
+@app.route('/logout')
+def logout():
+    if user["isLoggedIn"]:
+        user["isLoggedIn"] = False
+        user["name"] = None
+        return jsonify({"success": True})
+    else:
+        return jsonify({"success": False})
 
 
 if __name__ == "__main__":

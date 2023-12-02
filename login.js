@@ -1,6 +1,18 @@
 
+const isLoggedIn = async() => {
+    const webaddress = "http://localhost:5000/isLoggedIn";
+    const response = await fetch(webaddress);
+    const json = await response.json();
+    if (json.username != null){
+      return json.username;
+    }else {
+      return null;
+    }
+  }
 
 
+// Checks if user exists in the database, if so, logs them in
+// if not, displays error message
 const checkLogin = async() => {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -9,12 +21,25 @@ const checkLogin = async() => {
     const json = await response.json();
 
     if (json.found) {
-        console.log("user found " + json.username)
+        window.location.href = "logout.html";
     } else {
-        console.log("user not found " + json.username);
+        document.getElementById("userMess1").textContent = "Incorrect username or password.";
+        console.log("Here");
     }
-
 }
+
+// If user changes tabs to profile icon, user is taken to logout screen.
+// Not to be confused with checkLogin(), which logs the user in.
+const checkLoggedIn = async() => {
+    const webAddress = "http://localhost:5000/isLoggedIn";
+    const response = await fetch(webAddress);
+    const json = await response.json();
+    if (json.username != null) {
+      window.location.href = "/logout.html";
+    } else {
+      window.location.href = "/login.html";
+    }
+  }
 
 
 const createAcc = async() => {
