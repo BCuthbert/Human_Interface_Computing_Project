@@ -24,7 +24,6 @@ const checkLogin = async() => {
         window.location.href = "logout.html";
     } else {
         document.getElementById("userMess1").textContent = "Incorrect username or password.";
-        console.log("Here");
     }
 }
 
