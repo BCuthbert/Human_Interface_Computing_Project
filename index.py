@@ -85,6 +85,8 @@ def newAcc():
             return jsonify({"success": False})
     data.append([username,encrypt(password)])
     writeCSV(data)
+    user["name"] = username
+    user["isLoggedIn"] = True
     return jsonify({"success": True, "special": True})
 
 @app.route('/isLoggedIn')
@@ -93,6 +95,15 @@ def checkLoggedIn():
         return jsonify({"username": user["name"]});
     return jsonify({"username": None})
 
+
+@app.route('/logout')
+def logout():
+    if user["isLoggedIn"]:
+        user["isLoggedIn"] = False
+        user["name"] = None
+        return jsonify({"success": True})
+    else:
+        return jsonify({"success": False})
 
 
 if __name__ == "__main__":
