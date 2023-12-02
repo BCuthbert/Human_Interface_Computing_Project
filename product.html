@@ -29,7 +29,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <a href="#" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Company</a>
     <a href="#" class="w3-bar-item w3-left-align w3-button w3-hide-small w3-padding-large w3-hover-red" style="font-size:23px;">Blog</a>
     <a href="#" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red" style="margin-right: 00px;"><i class="fa fa-search" style="font-size:32px;padding:medium;"></i></a>
-    <a href="/login.html" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i></a>
+    <a onclick="checkLoggedIn();" class="w3-bar-item w3-right w3-button w3-hide-small w3-padding-large w3-hover-red"><i class="fa fa-user" style="font-size:32px;padding:medium;"></i><div id="display_username"></div></a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -168,7 +168,18 @@ function myFunction() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+  window.onload = async function() {
+    const webAddress = "http://localhost:5000/isLoggedIn";
+    const response = await fetch(webAddress);
+    const json = await response.json();
+    
+    if (json.username != null){
+      document.getElementById("display_username").textContent = json.username;
+    }
+  }
 </script>
+<script src="login.js"></script>
+
 
 </body>
 </html>

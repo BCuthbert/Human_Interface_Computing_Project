@@ -30,43 +30,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </div>
 
 <!-- Login form -->
-<header class="w3-container w3-white w3-center" style="padding:128px 16px" id="loginHead">
-  <div class="w3-center">
-    <h1 class="w3-margin" style="font-size:30px;user-select:none;">Login</h1>
-    <h2 class="w3-large" style="user-select:none;">Username</h2>
-    <input  id="username"></input>
-    <h3 class="w3-large" style="user-select:none;">Password</h3>
-    <input type="password" id="password" ></input>
-    <h5 class="w3-medium w3-text-orange" id="userMess1"></h5>
-    <h4 class="w3-hide" id="loginMessage"></h4>
-  </div>
-  <button class="w3-button w3-hover-red w3-margin-top w3-padding-medium" style="width:auto;background-color:#A64D79;color:white;" id="loginbtn" onclick="checkLogin();">Login</button>
-  <p class="w3-large" id="or">or</p>
-  <button class="w3-button w3-hover-red w3-margin-top w3-padding-medium" style="width:auto;background-color:#A64D79;color:white;" onclick="hideLogin()">Create Account</button>
-</header>
-
-
-
-<!-- Hidden create account form-->
-<!------------------------------->
-<header class="w3-container w3-center w3-hide" style="padding:128px 16px" id="createHead">
-  <div class="w3-center">
-    <h1 class="w3-margin" style="font-size:30px;user-select:none;">Create Account</h1>
-    <h2 class="w3-large" style="user-select:none;">Username</h2>
-    <input  id="newUser"></input>
-    <h3 class="w3-large" style="user-select:none;">Password</h3>
-    <input type="password" id="newPass" ></input>
-    <h4 class="w3-large" style="user-select:none;">Confirm Password</h4>
-    <input type="password" id="confirmPassword" ></input>
-    <h5 class="w3-medium w3-text-orange" id="userMess"></h5>
-    <li>Passwords must contain a special character</li>
-    <li>Passwords must be at least 6 characters in length</li>
-  </div>
-  <button class="w3-button w3-hover-red w3-margin-top w3-padding-medium" style="width:auto;background-color:#A64D79;color:white;" onclick="showPassword();">Show Password</button>
-  <button class="w3-button w3-hover-red w3-margin-top w3-padding-medium" style="width:auto;background-color:#A64D79;color:white;" onclick="createAcc();">Create Account</button>
-  
-
-
+<header class="w3-container w3-white w3-center" style="padding:128px 16px" id="logoutHead">
+  <button class="w3-button w3-hover-red w3-margin-top w3-padding-medium" style="width:auto;background-color:#A64D79;color:white;" id="loginbtn" onclick="logout();">Log Out</button>
 </header>
 
 
@@ -105,7 +70,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     document.getElementById("displayHead").setAttribute("style", "display:none;");
     document.getElementById("createHead").setAttribute("style", "display:none;");
   }
-  var flagLoaded = false;
   window.onload = async function() {
     const webAddress = "http://localhost:5000/isLoggedIn";
     const response = await fetch(webAddress);
@@ -113,6 +77,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     
     if (json.username != null){
       document.getElementById("display_username").textContent = json.username;
+    }
+  }
+  const logout = async() => {
+    const address = "http://localhost:5000/logout";
+    const response = await fetch(address);
+    const json = await response.json();
+    if (json.success){
+        window.location.href = "login.html";
     }
   }
  
