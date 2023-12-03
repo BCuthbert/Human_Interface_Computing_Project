@@ -16,9 +16,9 @@ user = {
 }
 
 
-def readCSV():
+def readCSV(fileRead):
     pairs = []
-    with open("authenticate.csv", newline='') as file:
+    with open(fileRead, newline='') as file:
         spam = csv.reader(file, delimiter=',')
         for line in spam:
             pairs.append(line)
@@ -50,7 +50,7 @@ def authenticate():
     password = request.args.get("password")
     print(encrypt(password))
     encrypted = encrypt(password)
-    data = readCSV()
+    data = readCSV('authenticate.csv')
     flag = False
     for pairs in data:
         if pairs[0] == username:
@@ -77,7 +77,7 @@ def newAcc():
     regex = re.compile("[@_!#$%^&*()<>?/|}{~:]")
     if (regex.search(password) == None): # if no special characters
         return jsonify({"special": False})
-    data = readCSV()
+    data = readCSV('authenticate.csv')
     for pair in data:
         print(pair[0])
         if pair[0] == username:
@@ -104,6 +104,12 @@ def logout():
         return jsonify({"success": True})
     else:
         return jsonify({"success": False})
+
+
+@app.route('/blogposts')
+def getBlogs():
+    data = readCSV('blogs.csv')
+    return jsonify({"data": data})
 
 
 if __name__ == "__main__":

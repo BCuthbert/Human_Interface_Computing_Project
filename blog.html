@@ -47,34 +47,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
 
 <!-- what we do -->
-<div class="w3-container w3-border w3-padding w3-padding-large">
+<div id="beginblogs" class="w3-container w3-border w3-padding w3-padding-large">
     <div class="w3-row">
-        <div class="w3-container w3-border w3-padding">
-            <div class="w3-col m2 w3-left"><h4>A New Hire!</h4></div>
-            <div class="w3-col m2 w3-right w3-right-align"><h6>11/30/2023 09:02</h6></div>
-            <div class="w3-col m4 w3-left w3-left-align"><h5>Meet the new team member, Chris!</h5></div>
-        </div>
-    </div>
-    <div class="w3-row">
-        <div class="w3-container w3-border w3-padding">
-            <div class="w3-col m2 w3-left"><h4>Update: Weekly Blog</h4></div>
-            <div class="w3-col m2 w3-right w3-right-align"><h6>11/29/2023 19:38</h6></div>
-            <div class="w3-col m4 w3-left w3-left-align"><h5>Sorry about this one</h5></div>
-        </div>
-    </div>
-    <div class="w3-row">
-        <div class="w3-container w3-border w3-padding">
-            <div class="w3-col m2 w3-left"><h4>Party Time!</h4></div>
-            <div class="w3-col m2 w3-right w3-right-align"><h6>11/23/2023 15:07</h6></div>
-            <div class="w3-col m4 w3-left w3-left-align"><h5>Hope everyone is having a happy Thanksgiving!</h5></div>
-        </div>
-    </div>
-    <div class="w3-row">
-        <div class="w3-container w3-border w3-padding">
-            <div class="w3-col m2 w3-left"><h4>Bug Fixes and new RC 5.3.23 Update!</h4></div>
-            <div class="w3-col m2 w3-right w3-right-align"><h6>12/02/2023 19:00</h6></div>
-            <div class="w3-col m4 w3-left w3-left-align"><h5>Christmas is coming soon, along with Christmas update!</h5></div>
-        </div>
+    
+    
     </div>
 </div>
 
@@ -101,20 +77,77 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <!-- footer -->
 <footer class="site-footer w3-grey">
-    <p>Don't see what you're looking for? <a href="#">Contact us</a></p> <!-- add link -->
-    <p>Additional resources: see our <a href="#">blog</a></p> <!-- add link -->
+    <p>Don't see what you're looking for? <a href="contact.html">Contact us</a></p>
+    <p>Additional resources: see our <a href="blog.html">blog</a></p>
 </footer>
+
+
+<!-- <div class="w3-row">
+  <div class="w3-container w3-border w3-padding">
+      <div class="w3-col m2 w3-left"><h4>Update: Weekly Blog</h4></div>
+      <div class="w3-col m2 w3-right w3-right-align"><h6>11/29/2023 19:38</h6></div>
+      <div class="w3-col m4 w3-left w3-left-align"><h5>Sorry about this one</h5></div>
+  </div>
+</div> -->
 
 
 <script>
     window.onload = async function() {
-      const webAddress = "http://localhost:5000/isLoggedIn";
-      const response = await fetch(webAddress);
-      const json = await response.json();
+      var webAddress = "http://localhost:5000/isLoggedIn";
+      var response = await fetch(webAddress);
+      var json = await response.json();
       
       if (json.username != null){
         document.getElementById("display_username").textContent = json.username;
       }
+
+
+      var blogs = document.getElementById("beginblogs");
+      webAddress = "http://localhost:5000/blogposts";
+      response = await fetch(webAddress);
+      json = await response.json();
+      console.log();
+      var i = 0;
+      while (json.data[i]){
+        // create all div elements
+        var newrow = document.createElement('div');
+        newrow.setAttribute("class", "w3-row");
+        var newDiv = document.createElement('div');
+        newDiv.setAttribute("class", "w3-container w3-border w3-padding");
+
+
+        var newDiv2 = document.createElement('div');
+        newDiv2.setAttribute("class", "w3-col m2 w3-left");
+        var newDiv3 = document.createElement("div");
+        newDiv3.setAttribute("class", "w3-col m2 w3-right w3-right-align");
+        var newDiv4 = document.createElement("div");
+        newDiv4.setAttribute("class", "w3-col m4 w3-left w3-left-align");
+        
+        // create all header elements
+        var newHead = document.createElement("h4");
+        newHead.textContent = json.data[i][0];
+        var newHead2 = document.createElement("h6");
+        newHead2.textContent = json.data[i][2];
+        var newHead3 = document.createElement("h5");
+        newHead3.textContent = json.data[i][1];
+
+        // append all elements in order
+        blogs.appendChild(newrow);
+        newrow.appendChild(newDiv);
+        newDiv.appendChild(newDiv2);
+        newDiv.appendChild(newDiv3);
+        newDiv.appendChild(newDiv4);
+
+
+        newDiv2.appendChild(newHead);
+        newDiv3.appendChild(newHead2);
+        newDiv4.appendChild(newHead3);
+
+        i++;
+      }
+
+
+
     }
   </script>
   <script src="login.js"></script>
